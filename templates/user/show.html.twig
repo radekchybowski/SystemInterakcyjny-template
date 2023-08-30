@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.record_view'|trans }} {{ user.id }}{% endblock %}
+
+{% block body %}
+
+
+
+    {% if user is defined %}
+        <h3>{{ 'label.id'|trans }}: {{ user.id }}</h3>
+        <h3>Email</h3>
+        <p>{{ user.email }}</p>
+        {% if user.avatar.filename is defined and user.avatar.filename|length %}
+            <h3>avatar</h3>
+            <img class="nav-profile-img" src="{{ asset(avatars_directory~user.avatar.filename) }}">
+        {% endif %}
+{#        <h3>Komentarz</h3>#}
+{#        <p>{{ task.comment }}</p>#}
+{#        <h3>{{ 'label.created_at'|trans }}</h3>#}
+{#        <p>{{ task.createdAt|date('Y-m-d') }}</p>#}
+{#        <h3>{{ 'label.updated_at'|trans }}</h3>#}
+{#        <p>{{ task.updatedAt|date('Y-m-d') }}</p>#}
+{#        <h3>{{ 'label.category'|trans }}</h3>#}
+{#        <p>{{ task.category.title }}</p>#}
+        <a href="{{ url('user_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    {% else %}
+        <p>{{ 'message.record_not_exist'|trans }}</p>
+    {%  endif %}
+
+{% endblock %}
